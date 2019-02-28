@@ -14,6 +14,9 @@
       //Pick a random word
       var word = words[Math.floor(Math.random() * words.length)];
       
+      //create lives
+      var lives = 6;
+      
       //Set up an array for the answer (will hold blanks)
       var answerArray = [];
       for(var i = 0; i < word.length; i++)
@@ -24,7 +27,7 @@
       var remainingLetters = word.length;
       
       //the game loop
-      while (remainingLetters > 0)
+      while (remainingLetters > 0 && lives > 0) // while you have not guessed the whole word AND you still have lives
       {
         //Show player their progress
         alert(answerArray.join(" "));
@@ -46,6 +49,11 @@
             {
               answerArray[j] = guess;
               remainingLetters--;
+            }
+            else
+            {
+              alert("you have guessed incorrectly");
+              lives--;
             }
           }
         }
